@@ -1,6 +1,6 @@
 # python3
-# INFO-F101 : programmation
-# projet3.py : Tetris
+# INFO-F101 : programming
+# project3.py : Tetris
 # Servais Nikita
 
 
@@ -11,7 +11,7 @@ from time import time
 
 ################################
 # Functions :                  #
-#   Regroupe all the functions #
+#   Regroup all the functions #
 #   under different class      #
 ################################
 
@@ -61,7 +61,7 @@ def reset():
     global BOARD
     board_turtle.clear()
     brick_turtle.clear()
-    BOARD = [[0 for i in range(WIDTH)] for j in range(LENGTH)]
+    BOARD = [[0 for _ in range(WIDTH)] for _ in range(LENGTH)]
     tracer(0, 0)
     bgcolor('black')
     run_game()
@@ -149,7 +149,7 @@ def board_draw(turtle, turtle2):
         for i in range(len(BOARD[0]) + 1):
             turtle2.penup()
             turtle2.goto((i + X) * SQUARE_SIZE - SQUARE_SIZE,
-                         (Y) * SQUARE_SIZE - SQUARE_SIZE)
+                         Y * SQUARE_SIZE - SQUARE_SIZE)
             turtle2.pendown()
             draw_square(turtle2, 'grey')
 
@@ -203,7 +203,7 @@ def board_del():
         if test:
             score += 1
             BOARD.pop(i)
-            BOARD.append([0 for i in range(WIDTH)])
+            BOARD.append([0 for _ in range(WIDTH)])
             board_turtle.clear()
             board_draw(board_turtle, board2_turtle)
     return score
@@ -348,7 +348,7 @@ def check_rotate(brick, x, y):
         if j + x + len(brick[0]) > len(BOARD[0]):
             test = False
         while j < len(brick[i]) and test:
-            if (brick[i][j] != 0 and BOARD[i + y][j + x] != 0):
+            if brick[i][j] != 0 and BOARD[i + y][j + x] != 0:
                 test = False
             j += 1
         i += 1
@@ -383,7 +383,7 @@ def check_right(x, y):
     if j + x + 1 < len(BOARD[0]):
         test = True
     while i < len(BRICK) and i + y < len(BOARD) and test:
-        if (BRICK[i][j - 1] != 0 and BOARD[i + y][j + 1 + x] != 0):
+        if BRICK[i][j - 1] != 0 and BOARD[i + y][j + 1 + x] != 0:
             test = False
         i += 1
     return test
